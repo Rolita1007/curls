@@ -1,4 +1,5 @@
 var express = require('express');
+var mongoose = require('mongoose');
 var path = require('path');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
@@ -6,7 +7,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var methodOverride = require('method-override');
 var hbs = require('hbs');
-var mongoose = require('mongoose');
+// var dbFolder = require('./db');
 
 var index = require('./routes/index');
 var users = require('./routes/users');
@@ -20,7 +21,7 @@ mongoose.connect(process.env.MONGODB_URI);
 
 var db = mongoose.connection;
 
-db.on('error', function(err){
+db.on('error', function(error){
   console.log(err);
 });
 

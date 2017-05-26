@@ -4,15 +4,24 @@ var Schema = mongoose.Schema;
 mongoose.Promise = global.Promise;
 
 var ItemSchema = new Schema({
-  name: String
+  product: String, // can change this to product, but then you have to update your
+  description: String
 });
 
 var UserSchema = new Schema({
-  id: Number,
   first_name: String,
   last_name: String,
   typeOfCurl: String,
-  items: [ItemSchema]
+  product: [ItemSchema]
+});
+
+UserSchema.pre('save', function(next){
+  now = new Date();
+  this.updated_at = now;
+  if ( !this.created_at ) {
+    this.created_at = now;
+  }
+  next();
 });
 
 var UserModel = mongoose.model("User", UserSchema);
