@@ -4,7 +4,7 @@ var Schema = mongoose.Schema;
 mongoose.Promise = global.Promise;
 
 var ItemSchema = new Schema({
-  product: String, // can change this to product, but then you have to update your
+  product: String,
   description: String
 });
 

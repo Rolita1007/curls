@@ -1,0 +1,15 @@
+<div>
+  <div>First Name: {{user.first_name}}</div>
+  <div>Last Name: {{user.last_name}}</div>
+  <div>tyofOfCurl: {{user.typeOfCurl}}</div>
+  <div>Products:
+
+    <ul>
+      {{#each.items}}
+        <li>Name: {{name}}</li>
+      {{/each}}
+    </ul>
+  </div>
+<div<a href="/edit/{{user.id}}">Edit this User</a>></div>
+
+</div>

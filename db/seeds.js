@@ -6,11 +6,11 @@ var Item = require('../models/item');
 
 mongoose.Promise = global.Promise;
 
-Item.remove({}, function(err){
+User.remove({}, function(err){
   console.log(err);
 });
 
-User.remove({}, function(err){
+Item.remove({}, function(err){
   console.log(err);
 });
 
@@ -22,15 +22,15 @@ var claudia = new User({
   product: [
     {
       name: "DevaCurl",
-      description: "Not hard to maintain"
+      description: "Set it Free"
     },
     {
       name: "BounceCurl",
-      description: "Works for all hair types"
+      description: "Aloe Vera Gel"
     },
     {
       name: "Curls",
-      description: "Best thing that ever happened in the universe"
+      description: "Blueberry Leave in Conditioner"
     }
   ]
 });
@@ -39,81 +39,67 @@ var paola = new User({
   first_name: 'Paola',
   last_name: 'Martinez',
   typeOfCurl: '3A',
-  products: [{name: "Let's get this frizz taken care of!"}]
+  product: [
+    {
+      name: "SheaMoisture",
+      description: "Curl Enhancing"
+    },
+    {
+      name: "Moroccaan",
+      description: "Curling Perfection Defining Cream"
+    },
+    {
+      name: "Garnier",
+      description: "Triple Nutrition Curl Nourish Leave"
+    }
+  ]
 });
 
-var monica = new User({
-  first_name: 'Monica',
+var elizabeth = new User({
+  first_name: 'Elizabeth',
   last_name: 'Brown',
   typeOfCurl: '3B',
-  products: [{name: "So many products to choose from"}]
-});
-
-//products
-var deva = new Items({
-  name: 'Devacurl',
-  product: "poo Co-wash",
-});
-
-var bounce = new Items({
-  name: 'bounceCurl',
-  product: 'Aloe vera gel'
-});
-
-var frizzCurls = new Items({
-  name: 'curls',
-  product: 'Blueberry Leavin-in-Conditioner',
+  product: [
+    {
+      name: "Cantu",
+      description: "Curl Activator Cream"
+    },
+    {
+      name: "Curls",
+      description: "Blueberry Hair Mask"
+    },
+    {
+      name: "Curls",
+      description: "Blissful lengths liquid hari growth vitamin"
+    }
+  ]
 });
 
 //save users
 claudia.save(function(err){
-  if (err)
+  if (err) {
     console.log(err);
     return;
   }
-    console.log('User created!');
+    console.log('user created!');
 });
 
 paola.save(function(err){
-  if (err)
-    console.log(err);
-    return:
-  }
-    console.log('User created!');
-});
-
-monica.save(function(err){
-  if (err)
+  if (err) {
     console.log(err);
     return;
   }
-    console.log('User created!');
+    console.log('user created!');
 });
 
-//save products
-deva.save(function(err){
-  if (err)
+elizabeth.save(function(err){
+  if (err) {
     console.log(err);
     return;
   }
-    console.log('Product created!');
+    console.log('user created!');
 });
 
-bounce.save(function(err){
-  if (err)
-    console.log(err);
-    return;
-  }
-    console.log('Product created!');
-});
-
-frizzCurls.save(function(err){
-  if (err)
-    console.log(err);
-    return;
-  }
-    console.log('Product created!');
-});
 
 
 

@@ -1,0 +1,12 @@
+<h1>Curls</h1>
+
+<ol>
+  {{#each user}}
+    <li>
+      <h1><a href="/user/{{this.id}}">{{this.fullName}}</a></h1>
+      <h3>{{this.typeOfCurl}}</h3>
+      <p>{{this.product}}</p>
+    </li>
+  {{/each}}
+</ol>
+
