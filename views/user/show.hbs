@@ -1,15 +1,37 @@
+<!-- <h1>{{user.first_name}}</h1>
+<h3>{{user.last_name}}</h3>
+<p>{{user.typeOfCurl}} {{user.product}}</p>
+
+<a href="/user" class="btn btn-default">Main Page</a> -->
+
 <div>
-  <div>First Name: {{user.first_name}}</div>
-  <div>Last Name: {{user.last_name}}</div>
-  <div>tyofOfCurl: {{user.typeOfCurl}}</div>
-  <div>Products:
+    <h1>My Curly Friend {{user.id}}</h1>
 
-    <ul>
-      {{#each.items}}
-        <li>Name: {{name}}</li>
-      {{/each}}
-    </ul>
-  </div>
-<div<a href="/edit/{{user.id}}">Edit this User</a>></div>
+    <div>First Name: {{user.first_name}}</div>
+    <div>Last Name: {{user.last_name}}</div>
+    <div>Type of Curl: {{user.typeOfCurl}}</div>
+    <div>Product: {{user.product}}</div>
+    <!-- <div>
+        <ul>
+            {{# each user.items}}
+                <span><li>Name: {{name}}</li></span>
+                <span><a href="/users/{{../user.id}}/items/{{_id}}/edit">Edit</a></span>
+                <span><a href="/users//{{../user.id}}/items/{{id}}/delete">Delete</a></span>
+            {{/ each}}
+        </ul>
+    </div> -->
+<div>
+  <a href="/authors/{{author.id}}/edit" class="btn btn-primary">Edit {{author.fullName}}</a>
+</div>
 
+<form action="/authors/{{author.id}}?_method=DELETE" method="POST">
+  <input type="submit" value="DELETE" class="btn btn-danger" />
+</form>
+
+    <a href="/user" class="btn btn-default">Main Page</a>
+
+   <!--  <div><a href="/users/edit/{{user.id}}">Edit This User</a></div>
+    <div><a href="/users/{{user.id}}/items/new">Add a New Item</a></div>
+    <div><a href="/users">Back to Users</a></div>
+ -->
 </div>

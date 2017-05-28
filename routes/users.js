@@ -29,6 +29,23 @@ router.get('/new', function(req, res) {
   res.render('user/new');
 });
 
+//show user
+router.get('/:id', function(req, res) {
+  User.findById(req.params.id)
+  .exec(function(err, user) {
+    if (err) {
+      console.log(err);
+      return;
+    }
+    console.log(user);
+    res.render('user/show', {
+      user: user
+    });
+  });
+});
+
+
+
 // router.post('/', function(req, res){
 //   var user = new user({
 //     first_name: req.body.first_name,
@@ -48,21 +65,6 @@ router.get('/new', function(req, res) {
 //     })
 //   });
 // });
-
-//show user
-router.get('/:id', function(req, res) {
-  User.findById(req.params.id)
-  .exec(function(err, user) {
-    if (err) {
-      console.log(err);
-      return;
-    }
-    console.log(user);
-    res.render('user/show', {
-      user: user
-    });
-  });
-});
 
 
 
