@@ -53,21 +53,21 @@ router.post('/', function(req, res) {
 //show user
 router.get('/:id', function(req, res) {
   User.findById(req.params.id)
-  .exec(function(err, user) {
-    if (err) {
-      console.log(err);
-      return;
-    }
+    .exec(function(err, user) {
+      if (err) {
+        console.log(err);
+        return;
+      }
 
-    console.log(user);
-    //res.send(user);
-    res.render('user/show', {
-      user: user
+      console.log(user);
+      //res.send(user);
+      res.render('user/show', {
+        user: user
+      });
     });
-  });
 });
 
-// edit author
+// edit user
 router.get('/:id/edit', function(req,res) {
   User.findById(req.params.id)
   .exec(function(err, user) {
@@ -104,7 +104,7 @@ router.patch('/:id', function(req, res) {
   });
 });
 
-// delete author
+// delete user
 router.delete('/:id', function(req, res) {
   User.findByIdAndRemove(req.params.id)
     .exec(function(err, user) {

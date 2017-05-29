@@ -3,11 +3,9 @@
 <ol>
   {{#each user}}
     <li>
-      <h1><a href="/user/{{this.id}}">{{this.first_name}} {{this.last_name}}</a></h1> <br>
-      <h3>{{this.typeOfCurl}}</h3> <br>
-      <p>{{this.product}}</p> <br>
+      <h1><a href="/users/{{this.id}}">{{this.first_name}} {{this.last_name}}</a></h1>
+      <h3>{{this.typeOfCurl}}</h3>
+      <p>{{this.products}}</p>
     </li>
   {{/each}}
 </ol>
-
-<a href="/authors/new" class="btn btn-default">Create My Curly Friend</a>
