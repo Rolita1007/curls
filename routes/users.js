@@ -68,7 +68,7 @@ router.get('/:id', function(req, res) {
 });
 
 // edit user
-router.get('/:id/edit', function(req,res) {
+router.get('/:id/edit', function(req, res) {
   User.findById(req.params.id)
   .exec(function(err, user) {
     if (err) {
@@ -76,33 +76,31 @@ router.get('/:id/edit', function(req,res) {
       return;
     }
 
-    res.render('user/edit', {
-      user: user
+    res.render('users/edit', {
+      user:user
     });
   });
 });
 
 //udate user
-router.patch('/:id', function(req, res) {
-  User.findByIdAndUpdate(req.params.id, {
-    first_name: req.body.first_name,
-    last_name: req.body.last_name,
-    typeOfCurl: req.body.typeOfCurl,
-    products: req.body.products,
-  }, {new: true})
-  .exec(function(err, user) {
-    if (err) {
-      console.log(err);
-      return;
-    }
+// router.patch('/:id', function(req, res) {
+//   User.findByIdAndUpdate(req.params.id, {
+//     first_name: req.body.first_name,
+//     last_name: req.body.last_name,
+//     typeOfCurl: req.body.typeOfCurl,
+//     products: req.body.products
+//   }, {new: true} )
+//   .exec(function(err, user) {
+//     if (err) {
+//       console.log(err);
+//       return;
+//     }
 
-    console.log(user);
-    //res.send(user);
-    res.render('user/show', {
-      user:user
-    });
-  });
-});
+//     console.log(users);
+//     res.send(user);
+
+//   });
+// });
 
 // delete user
 router.delete('/:id', function(req, res) {
