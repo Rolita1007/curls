@@ -7,7 +7,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var methodOverride = require('method-override');
 var hbs = require('hbs');
-// var dbFolder = require('./db');
+
 
 var index = require('./routes/index');
 var users = require('./routes/users');

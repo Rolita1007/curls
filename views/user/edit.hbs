@@ -1,0 +1,30 @@
+<h1>Edit {{author.fullName}}</h1>
+
+<div class="row">
+  <form action="/user/{{user.id}}?_method=PATCH" method="POST" class="col-md-6 col-md-offset-3">
+    <div class="form-group">
+      <label for="first_name">First Name:</label>
+      <input type="text" name="first_name" value="{{user.first_name}}" class="form-control">
+    </div>
+    <div class="form-group">
+      <label for="last_name">Last Name:</label>
+      <input type="text" name="last_name" value="{{user.last_name}}" class="form-control">
+    </div>
+    <div class="form-group">
+      <label for="typeOfCurl">Type of Curl:</label>
+      <input type="text" name="typeOfCurl" value="{{user.typeOfCurl}}" class="form-control">
+    </div>
+    <div class="form-group">
+      <label for="products">Products:</label>
+      <input type="text" name="products" value="{{user.typeOfCurl}}" class="form-control">
+    </div>
+    <div>
+      <input type="submit" value="Submit" class="btn btn-primary">
+    </div>
+  </form>
+</div>
+
+<div>
+  <a href="/user/{{user.id}}" class="btn btn-default">Back</a>
+  <a href="/user" class="btn btn-default">Main Page</a>
+</div>

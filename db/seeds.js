@@ -19,7 +19,7 @@ var claudia = new User({
   first_name: 'Claudia',
   last_name: 'Mercado',
   typeOfCurl: '2C',
-  product: [
+  products: [
     {
       name: "DevaCurl",
       description: "Set it Free"
@@ -39,7 +39,7 @@ var paola = new User({
   first_name: 'Paola',
   last_name: 'Martinez',
   typeOfCurl: '3A',
-  product: [
+  products: [
     {
       name: "SheaMoisture",
       description: "Curl Enhancing"
@@ -59,7 +59,7 @@ var elizabeth = new User({
   first_name: 'Elizabeth',
   last_name: 'Brown',
   typeOfCurl: '3B',
-  product: [
+  products: [
     {
       name: "Cantu",
       description: "Curl Activator Cream"
@@ -81,7 +81,7 @@ claudia.save(function(err){
     console.log(err);
     return;
   }
-    console.log('user created!');
+    console.log('claudia created!');
 });
 
 paola.save(function(err){
@@ -89,7 +89,7 @@ paola.save(function(err){
     console.log(err);
     return;
   }
-    console.log('user created!');
+    console.log('paola created!');
 });
 
 elizabeth.save(function(err){
@@ -97,7 +97,7 @@ elizabeth.save(function(err){
     console.log(err);
     return;
   }
-    console.log('user created!');
+    console.log('elizabeth created!');
 });
 
 
