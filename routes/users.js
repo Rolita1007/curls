@@ -195,7 +195,7 @@ router.get('/:id/edit', function(req, res){
   });
 });
 
-//update user
+//update product
 router.patch('/:id', function(req, res) {
   Product.findByIdAndUpdate(req.params.id, {
     name: req.body.name,
@@ -215,16 +215,16 @@ router.patch('/:id', function(req, res) {
   });
 });
 
-// delete user
+// delete product
 router.delete('/:id', function(req, res) {
-  User.findByIdAndRemove(req.params.id)
-  .exec(function(err, user) {
+  Product.findByIdAndRemove(req.params.id)
+  .exec(function(err, product) {
     if (err) {
       console.log(err);
       return;
     }
 
-    console.log('User deleted.');
+    console.log('Product deleted.');
     //res.send('User deleted.');
     res.rediret('/users');
   });
