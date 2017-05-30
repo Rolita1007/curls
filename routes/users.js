@@ -122,14 +122,14 @@ router.delete('/:id', function(req, res) {
 //item index
 router.get('/', function(req, res) {
   //res.send('respond with a resource');
-  product.find({})
-  .exec(function(err, user) {
+  Product.find({})
+  .exec(function(err, product) {
     if (err) {
       console.log(err);
       return;
     }
 
-    console.log(user);
+    console.log(product);
     //res.send(user);
     res.render('product/index', {
       product: product
@@ -149,33 +149,33 @@ router.post('/', function(req, res) {
     description: req.body.description
   });
 
-  product.save(function(err, user) {
+  product.save(function(err, product) {
     if (err) {
       console.log(err);
       return;
     }
 
-    console.log(user);
+    console.log(product);
     //res.send(user);
     res.render('product/show', {
-      user: user
+      product: product
     });
   });
 });
 
 //show product
 router.get('/:id', function(req, res) {
-  User.findById(req.params.id)
-    .exec(function(err, user) {
+  Product.findById(req.params.id)
+    .exec(function(err, product) {
       if (err) {
         console.log(err);
         return;
       }
 
-      console.log(user);
+      console.log(product);
       //res.send(user);
-      res.render('user/show', {
-        user: user
+      res.render('product/show', {
+        product: product
       });
     });
 });
