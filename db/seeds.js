@@ -19,19 +19,19 @@ var claudia = new User({
   first_name: 'Claudia',
   last_name: 'Mercado',
   typeOfCurl: '2C',
-  products: [
+  hairProduct: [
     {
       name: "DevaCurl",
       description: "Set it Free"
     },
-    {
-      name: "BounceCurl",
-      description: "Aloe Vera Gel"
-    },
-    {
-      name: "Curls",
-      description: "Blueberry Leave in Conditioner"
-    }
+    // {
+    //   name: "BounceCurl",
+    //   description: "Aloe Vera Gel"
+    // },
+    // {
+    //   name: "Curls",
+    //   description: "Blueberry Leave in Conditioner"
+    // }
   ]
 });
 
@@ -39,19 +39,19 @@ var paola = new User({
   first_name: 'Paola',
   last_name: 'Martinez',
   typeOfCurl: '3A',
-  products: [
+  hairProduct: [
     {
       name: "SheaMoisture",
       description: "Curl Enhancing"
     },
-    {
-      name: "Moroccaan",
-      description: "Curling Perfection Defining Cream"
-    },
-    {
-      name: "Garnier",
-      description: "Triple Nutrition Curl Nourish Leave"
-    }
+    // {
+    //   name: "Moroccaan",
+    //   description: "Curling Perfection Defining Cream"
+    // },
+    // {
+    //   name: "Garnier",
+    //   description: "Triple Nutrition Curl Nourish Leave"
+    // }
   ]
 });
 
@@ -59,19 +59,19 @@ var elizabeth = new User({
   first_name: 'Elizabeth',
   last_name: 'Brown',
   typeOfCurl: '3B',
-  products: [
+  hairProduct: [
     {
       name: "Cantu",
       description: "Curl Activator Cream"
     },
-    {
-      name: "Curls",
-      description: "Blueberry Hair Mask"
-    },
-    {
-      name: "Curls",
-      description: "Blissful lengths liquid hari growth vitamin"
-    }
+    // {
+    //   name: "Curls",
+    //   description: "Blueberry Hair Mask"
+    // },
+    // {
+    //   name: "Curls",
+    //   description: "Blissful lengths liquid hari growth vitamin"
+    // }
   ]
 });
 

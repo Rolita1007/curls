@@ -8,9 +8,10 @@ var bodyParser = require('body-parser');
 var methodOverride = require('method-override');
 var hbs = require('hbs');
 
-
+var router = express.Router();
 var index = require('./routes/index');
 var users = require('./routes/users');
+
 
 require('dotenv').config();
 
@@ -42,6 +43,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(methodOverride('_method'));
 
+app.use(router);
 app.use('/', index);
 app.use('/users', users);
 

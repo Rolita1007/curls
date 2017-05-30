@@ -33,7 +33,7 @@ router.post('/', function(req, res) {
     first_name: req.body.first_name,
     last_name: req.body.last_name,
     typeOfCurl: req.body.typeOfCurl,
-    products: req.body.products
+    //hairProduct: req.body.hairProduct
   });
 
   user.save(function(err, user) {
@@ -68,7 +68,7 @@ router.get('/:id', function(req, res) {
 });
 
 // edit user
-router.get('/:id/edit', function(req, res) {
+router.get('/:id/edit', function(req, res){
   User.findById(req.params.id)
   .exec(function(err, user) {
     if (err) {
@@ -82,39 +82,156 @@ router.get('/:id/edit', function(req, res) {
   });
 });
 
-//udate user
-// router.patch('/:id', function(req, res) {
-//   User.findByIdAndUpdate(req.params.id, {
-//     first_name: req.body.first_name,
-//     last_name: req.body.last_name,
-//     typeOfCurl: req.body.typeOfCurl,
-//     products: req.body.products
-//   }, {new: true} )
-//   .exec(function(err, user) {
-//     if (err) {
-//       console.log(err);
-//       return;
-//     }
+//update user
+router.patch('/:id', function(req, res) {
+  User.findByIdAndUpdate(req.params.id, {
+    first_name: req.body.first_name,
+    last_name: req.body.last_name,
+    typeOfCurl: req.body.typeOfCurl,
+    //hairProduct: req.body.hairproduct
+  }, {new: true})
+  .exec(function(err, user) {
+    if (err) {
+      console.log(err);
+      return;
+    }
 
-//     console.log(users);
-//     res.send(user);
-
-//   });
-// });
+    console.log(user);
+    //res.send(user);
+    res.render('users/show', {
+    user:user
+    });
+  });
+});
 
 // delete user
 router.delete('/:id', function(req, res) {
   User.findByIdAndRemove(req.params.id)
+  .exec(function(err, user) {
+    if (err) {
+      console.log(err);
+      return;
+    }
+
+    console.log('User deleted.');
+    //res.send('User deleted.');
+    res.rediret('/users');
+  });
+});
+
+//item index
+router.get('/', function(req, res) {
+  //res.send('respond with a resource');
+  product.find({})
+  .exec(function(err, user) {
+    if (err) {
+      console.log(err);
+      return;
+    }
+
+    console.log(user);
+    //res.send(user);
+    res.render('product/index', {
+      product: product
+    });
+  });
+});
+
+//new product
+router.get('/new', function(req, res) {
+  res.render('product/new');
+});
+
+//create product
+router.post('/', function(req, res) {
+  var product = new Product({
+    name: req.body.name,
+    description: req.body.description
+  });
+
+  product.save(function(err, user) {
+    if (err) {
+      console.log(err);
+      return;
+    }
+
+    console.log(user);
+    //res.send(user);
+    res.render('product/show', {
+      user: user
+    });
+  });
+});
+
+//show product
+router.get('/:id', function(req, res) {
+  User.findById(req.params.id)
     .exec(function(err, user) {
       if (err) {
         console.log(err);
         return;
       }
 
-      console.log('user deleted.');
-      //res.send('user deleted.');
-      res.redirect('/user');
+      console.log(user);
+      //res.send(user);
+      res.render('user/show', {
+        user: user
+      });
     });
 });
+
+// edit product
+router.get('/:id/edit', function(req, res){
+  User.findById(req.params.id)
+  .exec(function(err, user) {
+    if (err) {
+      console.log(err);
+      return;
+    }
+
+    res.render('users/edit', {
+      user:user
+    });
+  });
+});
+
+//update user
+router.patch('/:id', function(req, res) {
+  User.findByIdAndUpdate(req.params.id, {
+    first_name: req.body.first_name,
+    last_name: req.body.last_name,
+    typeOfCurl: req.body.typeOfCurl,
+    //hairProduct: req.body.hairproduct
+  }, {new: true})
+  .exec(function(err, user) {
+    if (err) {
+      console.log(err);
+      return;
+    }
+
+    console.log(user);
+    //res.send(user);
+    res.render('users/show', {
+    user:user
+    });
+  });
+});
+
+// delete user
+router.delete('/:id', function(req, res) {
+  User.findByIdAndRemove(req.params.id)
+  .exec(function(err, user) {
+    if (err) {
+      console.log(err);
+      return;
+    }
+
+    console.log('User deleted.');
+    //res.send('User deleted.');
+    res.rediret('/users');
+  });
+});
+
+
 
 module.exports = router;

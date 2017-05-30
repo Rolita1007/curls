@@ -4,7 +4,7 @@ var Schema = mongoose.Schema;
 mongoose.Promise = global.Promise;
 
 var ItemSchema = new Schema({
-  products: String,
+  name: String,
   description: String
 });
 
@@ -12,7 +12,7 @@ var UserSchema = new Schema({
   first_name: String,
   last_name: String,
   typeOfCurl: String,
-  products: [ItemSchema]
+  hairProduct: [ItemSchema]
 });
 
 UserSchema.pre('save', function(next){
