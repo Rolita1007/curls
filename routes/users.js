@@ -62,7 +62,8 @@ router.get('/:id', function(req, res) {
       console.log(user);
       //res.send(user);
       res.render('users/show', {
-        user: user
+        user: user,
+        userId: req.params.id
       });
     });
 });
@@ -77,7 +78,8 @@ router.get('/:id/edit', function(req, res){
     }
 
     res.render('users/edit', {
-      user:user
+      user:user,
+      userId: req.params.id
     });
   });
 });
@@ -115,29 +117,11 @@ router.delete('/:id', function(req, res) {
 
     console.log('User deleted.');
     //res.send('User deleted.');
-    res.rediret('/users');
+    res.redirect('/users');
   });
 });
 
 // Starting products routes
-
-//item index
-// router.get('/:userId/products', function(req, res) {
-//   //res.send('respond with a resource');
-//   User.findbyId(req.params.userId)
-//   .exec(function(err, products) {
-//     if (err) {
-//       console.log(err);
-//       return;
-//     }
-
-//     console.log(products);
-//     //res.send(user);
-//     res.render('products/index', {
-//       products: products
-//     });
-//   });
-// });
 
 //new product
 router.get('/:userId/products/new', function(req, res) {
@@ -194,7 +178,7 @@ router.get('/:userId/products/:productId/delete', function(req, res) {
 
 //show edit form
 
-router.get('/:userId/prodcuts/:productId/edit', function(req, res) {
+router.get('/:userId/products/:productId/edit', function(req, res) {
   var userId = req.params.userId;
   var productId = req.params.productId;
 
