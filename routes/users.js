@@ -142,99 +142,74 @@ router.delete('/:id', function(req, res) {
 //new product
 router.get('/:userId/products/new', function(req, res) {
 
-  var userId = req.params.userId
+  var userId = req.params.userId;
 
   res.render('products/new', {
     userId: userId
   });
 });
 
-//create product
-router.post('/', function(req, res) {
-  var product = new Product({
-    name: req.body.name,
-    description: req.body.description
-  });
+//Add a new item
+router.post('/:userId/products', function(req, res) {
+  var userId = req.params.userId;
 
-  product.save(function(err, product) {
-    if (err) {
-      console.log(err);
-      return;
-    }
+  var newProductName = req.body.name;
 
-    console.log(product);
-    //res.send(user);
-    res.render('products/show', {
-      product: product
-    });
-  });
-});
+  User.findbyId(userId)
+  exec(function(err, user) {
+    user.products.push(new Product({ name: newProductName }));
 
-//show product
-router.get('/:id', function(req, res) {
-  Product.findById(req.params.id)
-    .exec(function(err, product) {
+    user.save(function (err) {
       if (err) {
         console.log(err);
         return;
       }
 
-      console.log(product);
-      //res.send(user);
-      res.render('products/show', {
-        product: product
-      });
-    });
+      reponse.redirect('/users/' + userId);
+    })
+  });
 });
 
-// edit product
-router.get('/:id/edit', function(req, res){
-  Product.findById(req.params.id)
+
+//remove an item
+
+router.get('/:userId/products/:productId/delete', function(req, res) {
+
+  var userId = req.params.userId;
+  var productId = req.params.productId;
+
+  User.findByIdAndUpdate(userId, {
+    $pull: {
+      products: {_products: productId}
+    }
+  })
   .exec(function(err, product) {
     if (err) {
       console.log(err);
       return;
     }
-
-    res.render('products/edit', {
-      product:product
-    });
-  });
+    res.redirect('/users/' + userId);
+  })
 });
 
-//update product
-router.patch('/:id', function(req, res) {
-  Product.findByIdAndUpdate(req.params.id, {
-    name: req.body.name,
-    description: req.body.description
-  }, {new: true})
-  .exec(function(err, product) {
-    if (err) {
-      console.log(err);
-      return;
-    }
+//show edit form
 
-    console.log(product);
-    //res.send(user);
-    res.render('products/show', {
-    product:product
-    });
-  });
-});
+router.get('/:userId/prodcuts/:productId/edit', function(req, res) {
+  var userId = req.params.userId;
+  var productId = req.params.productId;
 
-// delete product
-router.delete('/:id', function(req, res) {
-  Product.findByIdAndRemove(req.params.id)
-  .exec(function(err, product) {
-    if (err) {
-      console.log(err);
-      return;
-    }
+  User.findById(userId)
+  .exec(function (err, user) {
 
-    console.log('Product deleted.');
-    //res.send('User deleted.');
-    res.rediret('/users');
-  });
+    var productToEdit = user.products.find(function (product) {
+      return product.id === productId;
+    })
+    res.render(products/edit, {
+      userId: userId,
+      productId: productId,
+      productToEdit: productToEdit
+    })
+  })
 });
 
 
