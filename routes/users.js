@@ -182,15 +182,15 @@ router.get('/:id', function(req, res) {
 
 // edit product
 router.get('/:id/edit', function(req, res){
-  User.findById(req.params.id)
-  .exec(function(err, user) {
+  Product.findById(req.params.id)
+  .exec(function(err, product) {
     if (err) {
       console.log(err);
       return;
     }
 
-    res.render('users/edit', {
-      user:user
+    res.render('product/edit', {
+      product:product
     });
   });
 });
