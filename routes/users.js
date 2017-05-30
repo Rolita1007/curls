@@ -212,6 +212,26 @@ router.get('/:userId/prodcuts/:productId/edit', function(req, res) {
   })
 });
 
+//edit an item
+router.put('/userId/products/:productId', function(req, res) {
+  var userId = req.params.userId;
+  var productId = req.params.productId;
+  var editedItemFromForm = req.body;
+
+  User.findById(userId)
+  .exec(function(err, user) {
+
+    var productToEdit = user.products.find(function (product) {
+      return product.id === productId;
+    })
+    productToEdit.name = editedItemFromForm.name;
+
+    user.save(function(err, user) {
+      response.redirect('/users/' + userId)
+    });
+  });
+});
+
 
 
 module.exports = router;
