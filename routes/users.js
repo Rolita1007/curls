@@ -8,23 +8,23 @@ var Item = require("../models/item");
 router.get('/', function(req, res) {
   //res.send('respond with a resource');
   User.find({})
-  .exec(function(err, user) {
+  .exec(function(err, users) {
     if (err) {
       console.log(err);
       return;
     }
 
-    console.log(user);
+    console.log(users);
     //res.send(user);
-    res.render('user/index', {
-      user: user
+    res.render('users/index', {
+      users: users
     });
   });
 });
 
 //new user
 router.get('/new', function(req, res) {
-  res.render('user/new');
+  res.render('users/new');
 });
 
 //create user
@@ -44,7 +44,7 @@ router.post('/', function(req, res) {
 
     console.log(user);
     //res.send(user);
-    res.render('user/show', {
+    res.render('users/show', {
       user: user
     });
   });
@@ -61,7 +61,7 @@ router.get('/:id', function(req, res) {
 
       console.log(user);
       //res.send(user);
-      res.render('user/show', {
+      res.render('users/show', {
         user: user
       });
     });
@@ -119,27 +119,34 @@ router.delete('/:id', function(req, res) {
   });
 });
 
-//item index
-router.get('/', function(req, res) {
-  //res.send('respond with a resource');
-  Product.find({})
-  .exec(function(err, product) {
-    if (err) {
-      console.log(err);
-      return;
-    }
+// Starting products routes
 
-    console.log(product);
-    //res.send(user);
-    res.render('product/index', {
-      product: product
-    });
-  });
-});
+//item index
+// router.get('/:userId/products', function(req, res) {
+//   //res.send('respond with a resource');
+//   User.findbyId(req.params.userId)
+//   .exec(function(err, products) {
+//     if (err) {
+//       console.log(err);
+//       return;
+//     }
+
+//     console.log(products);
+//     //res.send(user);
+//     res.render('products/index', {
+//       products: products
+//     });
+//   });
+// });
 
 //new product
-router.get('/new', function(req, res) {
-  res.render('product/new');
+router.get('/:userId/products/new', function(req, res) {
+
+  var userId = req.params.userId
+
+  res.render('products/new', {
+    userId: userId
+  });
 });
 
 //create product
@@ -157,7 +164,7 @@ router.post('/', function(req, res) {
 
     console.log(product);
     //res.send(user);
-    res.render('product/show', {
+    res.render('products/show', {
       product: product
     });
   });
@@ -174,7 +181,7 @@ router.get('/:id', function(req, res) {
 
       console.log(product);
       //res.send(user);
-      res.render('product/show', {
+      res.render('products/show', {
         product: product
       });
     });
@@ -189,7 +196,7 @@ router.get('/:id/edit', function(req, res){
       return;
     }
 
-    res.render('product/edit', {
+    res.render('products/edit', {
       product:product
     });
   });
@@ -209,7 +216,7 @@ router.patch('/:id', function(req, res) {
 
     console.log(product);
     //res.send(user);
-    res.render('product/show', {
+    res.render('products/show', {
     product:product
     });
   });
