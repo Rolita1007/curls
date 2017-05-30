@@ -197,22 +197,20 @@ router.get('/:id/edit', function(req, res){
 
 //update user
 router.patch('/:id', function(req, res) {
-  User.findByIdAndUpdate(req.params.id, {
-    first_name: req.body.first_name,
-    last_name: req.body.last_name,
-    typeOfCurl: req.body.typeOfCurl,
-    //hairProduct: req.body.hairproduct
+  Product.findByIdAndUpdate(req.params.id, {
+    name: req.body.name,
+    description: req.body.description
   }, {new: true})
-  .exec(function(err, user) {
+  .exec(function(err, product) {
     if (err) {
       console.log(err);
       return;
     }
 
-    console.log(user);
+    console.log(product);
     //res.send(user);
-    res.render('users/show', {
-    user:user
+    res.render('product/show', {
+    product:product
     });
   });
 });
