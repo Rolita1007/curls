@@ -6,12 +6,13 @@ This project is about people embracing their curls with natural products they us
 
 
 
+This is my ERD for my Curl app
 
-<img width="911" alt="screen shot 2017-05-30 at 2 56 29 pm" src="https://cloud.githubusercontent.com/assets/22422858/26600058/9dc3a546-4548-11e7-8979-47963818eca1.png">
+<img width="900" alt="screen shot 2017-05-30 at 3 07 03 pm" src="https://cloud.githubusercontent.com/assets/22422858/26600338/ba875e7e-4549-11e7-8906-392bdaa56a7c.png">
 
 
-The link below is my trello steps
+This is my trello steps
 https://trello.com/b/GN3L6K8o/curls
 
-The link below is my heroku app
+This is my heroku app
 https://lit-meadow-68495.herokuapp.com/
