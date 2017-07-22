@@ -1,4 +1,4 @@
-# Curls
+# :curly_loop: Curls :curly_loop:
 
 
 ## This project is about people embracing their curls with natural products they use to help other curly heads enjoy their curls.
